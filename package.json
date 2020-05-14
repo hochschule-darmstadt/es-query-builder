@@ -1,0 +1,20 @@
+{
+  "name": "es-query-builder",
+  "version": "1.0.0",
+  "description": "",
+  "main": "src/index.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hochschule-darmstadt/es-query-builder.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/hochschule-darmstadt/es-query-builder/issues"
+  },
+  "homepage": "https://github.com/hochschule-darmstadt/es-query-builder#readme"
+}
