@@ -13,7 +13,7 @@ export interface QueryObject {
 /**
  * A builder for an elasticsearch query
  */
-export default class QueryBuilder {
+export class QueryBuilder {
     /** query object */
     private readonly queryObject: QueryObject;
 
@@ -120,17 +120,15 @@ export default class QueryBuilder {
 
     /**
      * Add must query with should match options
-     * @param shoulds should options
+     * @param terms should options
      * @returns QueryBuilder instance
      */
-    // TODO: refactor
-    // public mustShouldMatch(shoulds: { key: string; value: string }[]): QueryBuilder {
-    //     const mustShould = { bool: { should: [] } };
-    //     shoulds.forEach((should: { key: string; value: string }) => mustShould.bool.should.push({ match: { [should.key]: should.value } }));
-
-    //     this.queryObject.query.bool.must.push(mustShould);
-    //     return this;
-    // }
+    public mustShouldMatch(terms: Array<{ key:string, value:string }>): QueryBuilder {
+        const shouldQuery: {bool: { should: Array<Object>}} = { bool: { should: [] } };
+        terms.forEach((term: { key:string, value:string }) => shouldQuery.bool.should.push({ match: { [term.key]: term.value } }));
+        this.queryObject.query.bool.must.push(shouldQuery);
+        return this;
+    }
 
     /**
      * Add must have term query
@@ -211,3 +209,5 @@ export default class QueryBuilder {
         return JSON.stringify(this.queryObject);
     };
 }
+
+export default QueryBuilder;
