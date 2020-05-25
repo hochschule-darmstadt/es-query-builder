@@ -10,7 +10,7 @@ export interface QueryObject {
     size?: number;
 }
 
-type SortDirection = 'desc' | 'asc';
+export type SortDirection = 'desc' | 'asc';
 
 /**
  * A builder for an elasticsearch query
@@ -188,7 +188,7 @@ export class QueryBuilder {
      * @param direction the sorting direction (default: desc)
      * @returns QueryBuilder
      */
-    public sortBy(attribute:string, direction: SortDirection = 'desc'): QueryBuilder {
+    public sort(attribute:string, direction: SortDirection = 'desc'): QueryBuilder {
         this.queryObject.sort.push({
            [attribute]: { order: direction }
         });
