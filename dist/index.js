@@ -163,7 +163,7 @@ export class QueryBuilder {
      * @param direction the sorting direction (default: desc)
      * @returns QueryBuilder
      */
-    sortBy(attribute, direction = 'desc') {
+    sort(attribute, direction = 'desc') {
         this.queryObject.sort.push({
             [attribute]: { order: direction }
         });

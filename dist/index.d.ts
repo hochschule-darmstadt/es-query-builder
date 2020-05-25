@@ -9,7 +9,7 @@ export interface QueryObject {
     sort: any[];
     size?: number;
 }
-declare type SortDirection = 'desc' | 'asc';
+export declare type SortDirection = 'desc' | 'asc';
 /**
  * A builder for an elasticsearch query
  */
@@ -110,7 +110,7 @@ export declare class QueryBuilder {
      * @param direction the sorting direction (default: desc)
      * @returns QueryBuilder
      */
-    sortBy(attribute: string, direction?: SortDirection): QueryBuilder;
+    sort(attribute: string, direction?: SortDirection): QueryBuilder;
     /**
      * Add result size
      * @param size size value - default is 20
