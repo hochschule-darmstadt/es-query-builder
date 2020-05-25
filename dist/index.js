@@ -158,13 +158,14 @@ export class QueryBuilder {
         return this;
     }
     /**
-     * Add sort by relativeRank
-     * @param order order - default is desc
-     * @returns QueryBuilder instance
+     * Add a sort criterion to the query
+     * @param attribute the attribute by which to sort the results
+     * @param direction the sorting direction (default: desc)
+     * @returns QueryBuilder
      */
-    sort(order = 'desc') {
+    sortBy(attribute, direction = 'desc') {
         this.queryObject.sort.push({
-            relativeRank: { order }
+            [attribute]: { order: direction }
         });
         return this;
     }

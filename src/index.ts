@@ -10,12 +10,14 @@ export interface QueryObject {
     size?: number;
 }
 
+type SortDirection = 'desc' | 'asc';
+
 /**
  * A builder for an elasticsearch query
  */
 export class QueryBuilder {
     /** query object */
-    private readonly queryObject: QueryObject;
+    protected queryObject: QueryObject;
 
     // TODO: ofType expects EntityType -> make configurable via constructor or similar (?)
 
@@ -181,13 +183,14 @@ export class QueryBuilder {
     }
 
     /**
-     * Add sort by relativeRank
-     * @param order order - default is desc
-     * @returns QueryBuilder instance
+     * Add a sort criterion to the query
+     * @param attribute the attribute by which to sort the results
+     * @param direction the sorting direction (default: desc)
+     * @returns QueryBuilder
      */
-    public sort(order: string = 'desc'): QueryBuilder {
+    public sortBy(attribute:string, direction: SortDirection = 'desc'): QueryBuilder {
         this.queryObject.sort.push({
-            relativeRank: { order }
+           [attribute]: { order: direction }
         });
         return this;
     }
