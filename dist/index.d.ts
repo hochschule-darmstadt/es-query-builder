@@ -9,12 +9,13 @@ export interface QueryObject {
     sort: any[];
     size?: number;
 }
+declare type SortDirection = 'desc' | 'asc';
 /**
  * A builder for an elasticsearch query
  */
 export declare class QueryBuilder {
     /** query object */
-    private readonly queryObject;
+    protected queryObject: QueryObject;
     /**
      * Create new QueryBuilder object.
      * @param query predefined query
@@ -104,11 +105,12 @@ export declare class QueryBuilder {
      */
     minimumShouldMatch(count: number): QueryBuilder;
     /**
-     * Add sort by relativeRank
-     * @param order order - default is desc
-     * @returns QueryBuilder instance
+     * Add a sort criterion to the query
+     * @param attribute the attribute by which to sort the results
+     * @param direction the sorting direction (default: desc)
+     * @returns QueryBuilder
      */
-    sort(order?: string): QueryBuilder;
+    sortBy(attribute: string, direction?: SortDirection): QueryBuilder;
     /**
      * Add result size
      * @param size size value - default is 20
