@@ -8,6 +8,7 @@ export interface QueryObject {
     };
     sort: any[];
     size?: number;
+    from?: number;
 }
 
 export type SortDirection = 'desc' | 'asc';
@@ -202,6 +203,16 @@ export class QueryBuilder {
      */
     public size(size: number = 20): QueryBuilder {
         this.queryObject.size = size;
+        return this;
+    }
+
+    /**
+     * Add result offset
+     * @param from offset value - default is 0
+     * @returns QueryBuilder instance
+     */
+    public from(from: number = 0): QueryBuilder {
+        this.queryObject.from = from;
         return this;
     }
 

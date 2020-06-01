@@ -178,6 +178,15 @@ export class QueryBuilder {
         this.queryObject.size = size;
         return this;
     }
+    /**
+     * Add result offset
+     * @param from offset value - default is 0
+     * @returns QueryBuilder instance
+     */
+    from(from = 0) {
+        this.queryObject.from = from;
+        return this;
+    }
 }
 export default QueryBuilder;
 //# sourceMappingURL=index.js.map
