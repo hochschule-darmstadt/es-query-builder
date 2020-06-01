@@ -8,6 +8,7 @@ export interface QueryObject {
     };
     sort: any[];
     size?: number;
+    from?: number;
 }
 export declare type SortDirection = 'desc' | 'asc';
 /**
@@ -117,6 +118,12 @@ export declare class QueryBuilder {
      * @returns QueryBuilder instance
      */
     size(size?: number): QueryBuilder;
+    /**
+     * Add result offset
+     * @param from offset value - default is 0
+     * @returns QueryBuilder instance
+     */
+    from(from?: number): QueryBuilder;
     /**
      * Override toString method
      */
